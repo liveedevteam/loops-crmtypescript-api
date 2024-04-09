@@ -18,7 +18,7 @@ export const generateAuthToken = async (authId: string) => {
     const { JWT_SECRET } = process.env;
     if (!JWT_SECRET) throw new ApiError(500, 'JWT secret is not defined');
     try {
-        const token = jwt.sign({
+        const token = await jwt.sign({
             sub: authId
         }, JWT_SECRET, {
             expiresIn: '12h'

@@ -9,11 +9,11 @@ export const login = async (req: Request, res: Response) => {
     if (!auth) {
         throw new ApiError(401, "Email or password is incorrect");
     }
-    const passwordMatch = await compareSync(password, auth.password);
+    const passwordMatch = compareSync(password, auth.password);
     if (!passwordMatch) {
         throw new ApiError(401, "Email or password is incorrect");
     }
-    const token = generateAuthToken(auth._id.toString());
+    const token = await generateAuthToken(auth._id.toString()); // Await the token here
     if (!token) {
         throw new ApiError(500, "Internal server error");
     }
