@@ -8,7 +8,7 @@ const connectDB = async (): Promise<void> => {
     await mongoose.connect(dbUri); // Add 'await' here
     console.log("Connect DB Success");
   } catch (isErr) {
-    console.log("Connect DB Failed");
+    console.error("Connect DB Failed");
   }
 };
 
