@@ -1,5 +1,10 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 
-export default async (err: any, req: Request, res: Response, next: NextFunction) => {
-    if (!req.timedout) next();
-}
+export default (
+  _err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
+  if (!req.timedout) next();
+};

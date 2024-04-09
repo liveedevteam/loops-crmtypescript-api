@@ -1,15 +1,15 @@
-import { NextFunction, Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { type NextFunction, type Request, type Response } from "express";
+import { v4 as uuidv4 } from "uuid";
 
-declare global {
-    namespace Express {
-        interface Request {
-            id?: string;
-        }
-    }
+declare module "express" {
+  interface Request {
+    id?: string;
+  }
 }
 
-export default (req: Request, res: Response, next: NextFunction) => {
-    req.id = uuidv4();
-    next();
-}
+const assignId = (req: Request, res: Response, next: NextFunction): void => {
+  req.id = uuidv4();
+  next();
+};
+
+export default assignId;

@@ -1,19 +1,15 @@
-// src/config/database.ts
+import mongoose from "mongoose";
 
-import mongoose from 'mongoose';
+const connectDB = async (): Promise<void> => {
+  const dbUri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URI}/${process.env.DB_NAME}?ssl=true&replicaSet=atlas-vupa4c-shard-0&authSource=admin&retryWrites=true&w=majority`;
+  try {
+    mongoose.Promise = global.Promise;
+    mongoose.set("strictQuery", false);
+    await mongoose.connect(dbUri); // Add 'await' here
+    console.log("Connect DB Success");
+  } catch (isErr) {
+    console.log("Connect DB Failed");
+  }
+};
 
-const connectDB = async () => {
-    const dbUri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URI}/${process.env.DB_NAME}?ssl=true&replicaSet=atlas-vupa4c-shard-0&authSource=admin&retryWrites=true&w=majority`
-    try {
-        mongoose.Promise = global.Promise
-        mongoose.set("strictQuery", false);
-        mongoose.connect(dbUri)
-        console.log("Connect DB Success")
-    } catch (isErr) {
-        console.log(`Connect DB Failed`)
-    }
-}
-
-export {
-    connectDB
-}
+export { connectDB };

@@ -1,6 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 
-export default async (err: any, req: Request, res: Response, next: NextFunction) => {
-    res.set('X-Frame-Options', 'DENY');
-    next();
-}
+export default (
+  _err: any,
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
+  res.set("X-Frame-Options", "DENY");
+  next();
+};
