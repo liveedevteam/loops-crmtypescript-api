@@ -1,0 +1,24 @@
+# Node.js dependencies
+node_modules
+
+# TypeScript output
+dist
+
+# IDE files
+.idea
+.vscode
+*.iml
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# AWS CDK
+cdk.out
+
+# Docker volumes
+.docker_volumes
