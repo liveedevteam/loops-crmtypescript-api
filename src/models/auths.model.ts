@@ -1,6 +1,3 @@
-import { model, Schema } from "mongoose";
-import { type IAuth } from "../interfaces/auths.interfaces";
-
 /**
  * @openapi
  * components:
@@ -44,6 +41,9 @@ import { type IAuth } from "../interfaces/auths.interfaces";
  *           format: date-time
  *           description: Timestamp when the user was last updated.
  */
+
+import { model, Schema } from "mongoose";
+import { type IAuth } from "../interfaces/auths.interfaces";
 
 const authSchema = new Schema({
   email: {

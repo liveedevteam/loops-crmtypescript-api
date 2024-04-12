@@ -25,7 +25,7 @@ export const swaggerOptions = {
       },
     },
   },
-  apis: ["./src/routes/auths/docs/*.docs.ts", "./src/models/*.ts"], // Path to the API docs
+  apis: ["./src/routes/**/docs/*.docs.ts", "./src/models/*.ts"], // Path to the API docs
   security: [
     {
       bearerAuth: [],

@@ -27,7 +27,7 @@
  *                 type: string
  *                 required: true
  *                 description: "Platform user is registering from (e.g., web, mobile)"
- *                 example: "web"
+ *                 example: "event"
  *     responses:
  *       200:
  *         description: Login successful
