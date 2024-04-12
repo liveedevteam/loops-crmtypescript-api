@@ -10,12 +10,16 @@ import timeout from "connect-timeout";
 import morgan from "morgan";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 import handleError from "./middlewares/handleError";
 import assignId from "./utils/assignId";
 import authsRoutes from "./routes/auths.routes";
 import haltOnTimedout from "./middlewares/haltOnTimedout";
 import { connectDB } from "./configs/database";
+import { swaggerOptions } from "./configs/swagger";
+import { swaggerBasicAuth } from "./middlewares/swaggerBasicAuth";
 
 dotenv.config();
 dayjs.extend(utc);
@@ -31,7 +35,9 @@ let morganConfig = "dev";
 if (NODE_ENV === "prod") {
   morganConfig = ":id :method :url :response-time --- :status";
 }
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
+app.use("/api-docs", swaggerBasicAuth, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 void connectDB();
 
 app.use(assignId);

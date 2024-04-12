@@ -2,7 +2,7 @@ import { body, validationResult } from "express-validator";
 import { type Request, type Response, type NextFunction } from "express";
 import ApiError from "../utils/ApiError";
 
-export const validateLogin = [
+export const validateRegister = [
   body("email")
     .exists()
     .withMessage("Email is required")
@@ -20,6 +20,11 @@ export const validateLogin = [
     .withMessage("Platform must be a string")
     .isIn(["event", "station"])
     .withMessage("Platform is invalid"),
+  body("role")
+    .exists()
+    .withMessage("Role is required")
+    .isString()
+    .withMessage("Role must be a string"),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
