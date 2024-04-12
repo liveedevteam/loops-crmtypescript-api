@@ -1,7 +1,7 @@
 /**
  * @openapi
  * /api/otps/verify:
- *   post:
+ *   patch:
  *     tags:
  *       - OTPs
  *     summary: Send OTP
