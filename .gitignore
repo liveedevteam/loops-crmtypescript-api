@@ -23,3 +23,47 @@ cdk.out
 
 # Docker volumes
 .docker_volumes
+
+# Node.js dependencies
+node_modules/
+
+# Serverless build artifacts
+.serverless/
+.webpack/
+
+# Build directories
+dist/
+build/
+
+# Local environment variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Test coverage reports
+coverage/
+
+# AWS credentials and configuration
+.aws/
+
+# Yarn dependencies
+yarn.lock
+
+# npm debug logs
+npm-debug.log*

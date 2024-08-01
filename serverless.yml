@@ -1,0 +1,40 @@
+service: loops-crmtypescript-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-southeast-1
+
+functions:
+  loops-crmtypescript-api:
+    handler: dist/index.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+package: 
+  individually: true
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-tracing
+
+custom:
+  serverless-offline:
+    httpPort: 3001
+
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    exclude:
+      - node_modules
+      - .serverless
+    target: node20
+    platform: node
+    concurrency: 10
